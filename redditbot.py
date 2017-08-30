@@ -1,5 +1,5 @@
 import praw
-import config
+import config # import config.py with your custom settings for login
 import time
 import os
 
@@ -15,13 +15,13 @@ def bot_login():
 
 	return r
 
-def run_bot(r, comments_replied_to):
+def run_bot(r, comments_replied_to):# this stores the comment id into a text file and makes sure we don't recomment the comment again.
 	print "Obtaining 10 comments..."
 
 	for comment in r.subreddit('Overwatchmemes').comments(limit=10): # the name of the subreddit goes on this line.
-		if "nerf d.va" in comment.body and comment.id not in comments_replied_to and comment.author != r.user.me():
+		if "nerf d.va" in comment.body and comment.id not in comments_replied_to and comment.author != r.user.me(): # this is what our bot is looking for in a comment.
 			print "String found! " + comment.id
-			comment.reply("NERF THIS!!")
+			comment.reply("NERF THIS!!") # this is what the bot replys back with via a comment.
 			print "Replied to comment! " + comment.id
 
 			comments_replied_to.append(comment.id)
