@@ -10,7 +10,7 @@ def bot_login():
 			password = config.password,
 			client_id = config.client_id,
 			client_secret = config.client_secret,
-			user_agent = "Nerf This Test Bot v0.3")
+			user_agent = "Insert User Agent Here") # add a useful user agent description here
 	print "Logged in!"
 
 	return r
