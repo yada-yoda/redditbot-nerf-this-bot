@@ -30,7 +30,7 @@ def run_bot(r, comments_replied_to):# this stores the comment id into a text fil
 				f.write(comment.id + "\n")
 
 	print "Sleeping for 10 seconds..."
-	#Sleep for 10 second...
+	# Sleep for 10 second...
 	time.sleep(10)
 
 def get_saved_comments():
