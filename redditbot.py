@@ -25,7 +25,7 @@ def run_bot(r, comments_replied_to):# this stores the comment id into a text fil
 		comment_is_new = (comment.id not in comments_replied_to)
 		comment_is_not_me = (comment.author != r.user.me())
 		
-		if comment_containts_keyword and comment_is_new and comment_is_not_me: # this is what our bot is looking for in a comment.
+		if comment_contains_keyword and comment_is_new and comment_is_not_me: # this is what our bot is looking for in a comment.
 			print "String found! " + comment.id
 			comment.reply("NERF THIS!!") # this is what the bot replys back with via a comment.
 			print "Replied to comment! " + comment.id
