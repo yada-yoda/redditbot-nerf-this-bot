@@ -19,7 +19,13 @@ def run_bot(r, comments_replied_to):# this stores the comment id into a text fil
 	print "Obtaining 10 comments..."
 
 	for comment in r.subreddit('Overwatchmemes').comments(limit=10): # the name of the subreddit goes on this line.
-		if "nerf d.va" in comment.body and comment.id not in comments_replied_to and comment.author != r.user.me(): # this is what our bot is looking for in a comment.
+		
+		words = ["nerf d.va", "nerf dva"]
+		comment_contains_keyword = any(word in comment.body for word in words)
+		comment_is_new = (comment.id not in comments_replied_to)
+		comment_is_not_me = (comment.author != r.user.me())
+		
+		if comment_containts_keyword and comment_is_new and comment_is_not_me: # this is what our bot is looking for in a comment.
 			print "String found! " + comment.id
 			comment.reply("NERF THIS!!") # this is what the bot replys back with via a comment.
 			print "Replied to comment! " + comment.id
@@ -30,8 +36,7 @@ def run_bot(r, comments_replied_to):# this stores the comment id into a text fil
 				f.write(comment.id + "\n")
 
 	print "Sleeping for 10 seconds..."
-	# Sleep for 10 second...
-	time.sleep(10)
+	time.sleep(10) # Sleep for 10 second...
 
 def get_saved_comments():
 	if not os.path.isfile("comments_replied_to.txt"):
