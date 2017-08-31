@@ -20,7 +20,7 @@ def run_bot(r, comments_replied_to):# this stores the comment id into a text fil
 
 	for comment in r.subreddit('Overwatchmemes').comments(limit=10): # the name of the subreddit goes on this line.
 		
-		words = ["nerf d.va", "nerf dva"]
+		words = ["nerf d.va", "nerf dva", "nerf"]
 		comment_contains_keyword = any(word in comment.body for word in words)
 		comment_is_new = (comment.id not in comments_replied_to)
 		comment_is_not_me = (comment.author != r.user.me())
